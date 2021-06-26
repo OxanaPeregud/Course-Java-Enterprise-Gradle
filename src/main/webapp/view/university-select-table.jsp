@@ -20,12 +20,19 @@
                 <option value="${pageContext.request.contextPath}/university-get-students-table">Students</option>
                 <option value="${pageContext.request.contextPath}/university-get-courses-table">Courses</option>
                 <option value="${pageContext.request.contextPath}/university-get-teachers-table">Teachers</option>
-                <option value="${pageContext.request.contextPath}/university-get-student-results-table">Student Results</option>
+                <option value="${pageContext.request.contextPath}/university-get-student-results-table">Student
+                    Results
+                </option>
                 <option value="${pageContext.request.contextPath}/university-get-tasks-table">Tasks</option>
             </select>
         </label>
 
     </div>
+
+    <p>
+        <a href="${pageContext.request.contextPath}/add-cookie">Set Cookie</a>
+    </p>
+
 </div>
 
 </body>
