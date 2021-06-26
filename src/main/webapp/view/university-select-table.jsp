@@ -33,6 +33,10 @@
         <a href="${pageContext.request.contextPath}/add-cookie">Set Cookie</a>
     </p>
 
+    <p>
+        <a href="${pageContext.request.contextPath}/login">Login to Profile</a>
+    </p>
+
 </div>
 
 </body>
