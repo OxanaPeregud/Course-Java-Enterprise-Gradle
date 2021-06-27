@@ -19,7 +19,7 @@ public class AdminService {
         return repo.findAll();
     }
 
-    public void save(Admin admin) {
-        repo.save(admin);
+    public Admin save(Admin admin) {
+        return repo.save(admin);
     }
 }

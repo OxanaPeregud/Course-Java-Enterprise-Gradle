@@ -19,7 +19,7 @@ public class TaskService {
         return repo.findAll();
     }
 
-    public void save(Task task) {
-        repo.save(task);
+    public Task save(Task task) {
+        return repo.save(task);
     }
 }

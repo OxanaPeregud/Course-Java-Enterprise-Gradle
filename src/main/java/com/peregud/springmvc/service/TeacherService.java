@@ -19,7 +19,7 @@ public class TeacherService {
         return repo.findAll();
     }
 
-    public void save(Teacher teacher) {
-        repo.save(teacher);
+    public Teacher save(Teacher teacher) {
+        return repo.save(teacher);
     }
 }

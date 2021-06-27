@@ -19,7 +19,7 @@ public class CourseService {
         return repo.findAll();
     }
 
-    public void save(Course course) {
-        repo.save(course);
+    public Course save(Course course) {
+        return repo.save(course);
     }
 }

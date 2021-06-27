@@ -19,7 +19,7 @@ public class StudentService {
         return repo.findAll();
     }
 
-    public void save(Student student) {
-        repo.save(student);
+    public Student save(Student student) {
+        return repo.save(student);
     }
 }
