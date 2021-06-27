@@ -19,7 +19,7 @@ public class SessionListenerController {
             LOG.info("Session not available, creating new session");
             session = request.getSession(true);
         }
-        return "Session is available now: " + session;
+        return "Session is available now: " + session.getId();
     }
 
     @GetMapping("/destroy-active-session")
@@ -27,7 +27,7 @@ public class SessionListenerController {
         HttpSession session = request.getSession(false);
         if (session != null) {
             session.invalidate();
-            return "Session Destroyed: " + session;
+            return "Session Destroyed: " + session.getId();
         }
         return "Session is not available to destroy";
     }

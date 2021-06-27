@@ -1,38 +1,24 @@
 package com.peregud.springmvc.session;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Bean;
 
-import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
-import java.util.concurrent.atomic.AtomicInteger;
 
-@WebListener
 public class CustomHttpSessionListener implements HttpSessionListener {
-    private static final Logger LOG = LoggerFactory.getLogger(CustomHttpSessionListener.class);
-    private final AtomicInteger activeSessionCount = new AtomicInteger();
 
-    @Override
-    public void sessionCreated(HttpSessionEvent sessionEvent) {
-        LOG.info("Incrementing Session Counter");
-        activeSessionCount.incrementAndGet();
-        LOG.info("New Session Created");
-        updateActiveSessionCounter(sessionEvent);
-    }
+    @Bean
+    public HttpSessionListener httpSessionListener() {
+        return new HttpSessionListener() {
+            @Override
+            public void sessionCreated(HttpSessionEvent sessionEvent) {
+                System.out.println("Session Created with session id: " + sessionEvent.getSession().getId());
+            }
 
-    @Override
-    public void sessionDestroyed(HttpSessionEvent sessionEvent) {
-        LOG.info("Decrementing Session Counter");
-        activeSessionCount.decrementAndGet();
-        LOG.info("Session Destroyed");
-        updateActiveSessionCounter(sessionEvent);
-    }
-
-    private void updateActiveSessionCounter(HttpSessionEvent sessionEvent) {
-        LOG.info("Set session in the context");
-        sessionEvent.getSession().getServletContext()
-                .setAttribute("activeSession", activeSessionCount.get());
-        LOG.info("Total Active Session : {} ", activeSessionCount.get());
+            @Override
+            public void sessionDestroyed(HttpSessionEvent sessionEvent) {
+                System.out.println("Session Destroyed, Session id: " + sessionEvent.getSession().getId());
+            }
+        };
     }
 }
