@@ -27,6 +27,7 @@ public class LoginServlet extends HttpServlet {
             out.print("Hello, " + name);
             HttpSession session = request.getSession();
             session.setAttribute("name", name);
+            request.getRequestDispatcher("view/university-select-table.jsp").include(request, response);
         } else {
             out.print("Incorrect username or password!");
             request.getRequestDispatcher("view/login.jsp").include(request, response);

@@ -42,5 +42,9 @@
     <a href="${pageContext.request.contextPath}/read-cookie">Read Cookie</a>
 </p>
 
+<p>
+    <a href="${pageContext.request.contextPath}/login">Go back to login</a>
+</p>
+
 </body>
 </html>

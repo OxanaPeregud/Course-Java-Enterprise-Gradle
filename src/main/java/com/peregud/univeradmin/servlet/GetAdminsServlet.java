@@ -16,6 +16,7 @@ public class GetAdminsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("admins", DataUtil.getAll(Admin.class));
-        request.getRequestDispatcher("view/university-admins-table.jsp").forward(request,response);
+        request.getRequestDispatcher("view/login-operations.jsp").include(request, response);
+        request.getRequestDispatcher("view/university-admins-table.jsp").include(request,response);
     }
 }

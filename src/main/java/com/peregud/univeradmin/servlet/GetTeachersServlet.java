@@ -16,6 +16,7 @@ public class GetTeachersServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("teachers", DataUtil.getAll(Teacher.class));
-        request.getRequestDispatcher("view/university-teachers-table.jsp").forward(request,response);
+        request.getRequestDispatcher("view/login-operations.jsp").include(request, response);
+        request.getRequestDispatcher("view/university-teachers-table.jsp").include(request,response);
     }
 }

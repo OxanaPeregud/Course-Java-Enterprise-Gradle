@@ -16,6 +16,7 @@ public class GetCoursesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("courses", DataUtil.getAll(Course.class));
-        request.getRequestDispatcher("view/university-courses-table.jsp").forward(request,response);
+        request.getRequestDispatcher("view/login-operations.jsp").include(request, response);
+        request.getRequestDispatcher("view/university-courses-table.jsp").include(request,response);
     }
 }

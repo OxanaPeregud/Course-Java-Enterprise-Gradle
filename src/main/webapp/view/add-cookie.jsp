@@ -16,5 +16,9 @@
     <input type="submit" value="Submit"/>
 </form>
 
+<p>
+    <a href="${pageContext.request.contextPath}/login">Go back to login</a>
+</p>
+
 </body>
 </html>

@@ -11,6 +11,6 @@ public class UniverAdminAppServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.sendRedirect(request.getContextPath() + "/university-choose-table");
+        response.sendRedirect(request.getContextPath() + "/login");
     }
 }

@@ -34,5 +34,9 @@
     <a href="${pageContext.request.contextPath}/delete-cookie">Delete Cookie</a>
 </p>
 
+<p>
+    <a href="${pageContext.request.contextPath}/login">Go back to login</a>
+</p>
+
 </body>
 </html>
