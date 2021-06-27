@@ -19,7 +19,7 @@ public class Task implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name = "taskname")
     private String taskName;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
