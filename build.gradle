@@ -12,6 +12,10 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    provided
+}
+
 ext {
     junitVersion = '5.7.1'
     hibernateVersion = '5.3.1.Final'
@@ -41,7 +45,6 @@ dependencies {
     implementation ("org.glassfish.web:jakarta.servlet.jsp.jstl:1.2.6")
     implementation ("org.glassfish.jaxb:jaxb-runtime:2.3.2")
     implementation ('junit:junit:4.13.1')
-    testImplementation ('org.mockito:mockito-core:3.2.4')
     runtimeOnly ('org.springframework.boot:spring-boot-devtools')
     compileOnly ("jstl:jstl:1.2")
     compileOnly ("taglibs:standard:1.1.2")
@@ -49,6 +52,7 @@ dependencies {
     annotationProcessor ("org.projectlombok:lombok:${lombokVersion}")
     annotationProcessor ('org.springframework.boot:spring-boot-configuration-processor')
     testImplementation ('org.springframework.boot:spring-boot-starter-test')
+    testImplementation ('org.mockito:mockito-core:3.2.4')
     testImplementation ("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly ("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
