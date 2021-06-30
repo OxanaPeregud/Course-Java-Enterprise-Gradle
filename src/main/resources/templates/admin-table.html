@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Admin Manager</title>
+</head>
+<body>
+<div align="center">
+    <h1>Admin List</h1>
+    <a href="/add-admin">Add New Admin</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>Admin ID</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="admin : ${listAdmins}">
+            <td th:text="${admin.id}">Admin ID</td>
+            <td th:text="${admin.name}">Name</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div align="center">
+<p>
+    <a href="/">Choose Another Table</a>
+</p>
+</div>
+</body>
+</html>

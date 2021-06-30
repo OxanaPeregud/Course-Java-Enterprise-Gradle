@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Admin Manager</title>
+</head>
+<body>
+<div align="center">
+    <h1>Select List</h1>
+
+    <div class="dropdown">
+        <button class="dropdown-button">Tables Dropdown</button>
+        <div class="dropdown-list">
+
+            <label>
+                <select onchange="location = this.value;">
+                    <option>Choose table</option>
+                    <option value="/get-admin">Admins</option>
+                    <option value="/get-course">Courses</option>
+                    <option value="/get-student">Students</option>
+                    <option value="/get-student-result">Student Results</option>
+                    <option value="/get-teacher">Teachers</option>
+                    <option value="/get-task">Tasks</option>
+                </select>
+            </label>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
