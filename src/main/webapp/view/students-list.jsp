@@ -35,6 +35,11 @@
             </tr>
         </c:forEach>
     </table>
+
+    <p>
+        <a href="${pageContext.request.contextPath}/choose-list">Choose Another List</a>
+    </p>
+
 </div>
 </body>
 </html>
