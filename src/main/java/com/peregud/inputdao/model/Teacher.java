@@ -28,4 +28,15 @@ public class Teacher implements Serializable {
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn
     private Course course;
+
+    public Teacher(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public Teacher(Integer id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 }
