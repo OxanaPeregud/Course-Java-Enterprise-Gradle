@@ -1,7 +1,6 @@
 package com.peregud.inputdao.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,7 +10,6 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "teacher")
 public class Teacher implements Serializable {
@@ -34,9 +32,24 @@ public class Teacher implements Serializable {
         this.lastName = lastName;
     }
 
+    public Teacher(String firstName, String lastName, Course course) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.course = course;
+    }
+
     public Teacher(Integer id, String firstName, String lastName) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }

@@ -31,6 +31,8 @@ public abstract class AbstractDAO<T> {
         } catch (Exception e) {
             e.printStackTrace();
             entityManager.getTransaction().rollback();
+        } finally {
+            entityManager.close();
         }
         return t;
     }

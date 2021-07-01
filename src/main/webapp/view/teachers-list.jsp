@@ -21,12 +21,14 @@
             <th>ID</th>
             <th>First Name</th>
             <th>Last Name</th>
+            <th>Course</th>
         </tr>
         <c:forEach var="teacher" items="${listTeachers}">
             <tr>
                 <td><c:out value="${teacher.id}"/></td>
                 <td><c:out value="${teacher.firstName}"/></td>
                 <td><c:out value="${teacher.lastName}"/></td>
+                <td><c:out value="${teacher.course}"/></td>
                 <td>
                     <a href="edit-teacher?id=<c:out value='${teacher.id}' />">Edit</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;

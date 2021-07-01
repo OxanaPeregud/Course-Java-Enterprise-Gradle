@@ -1,7 +1,6 @@
 package com.peregud.inputdao.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,7 +12,6 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "course")
 public class Course implements Serializable {
@@ -37,5 +35,10 @@ public class Course implements Serializable {
     public Course(Integer id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
