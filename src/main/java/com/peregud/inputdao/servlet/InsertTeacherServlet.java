@@ -6,7 +6,6 @@ import com.peregud.inputdao.dao.impl.DAOCourseImpl;
 import com.peregud.inputdao.dao.impl.DAOTeacherImpl;
 import com.peregud.inputdao.model.Course;
 import com.peregud.inputdao.model.Teacher;
-import lombok.SneakyThrows;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

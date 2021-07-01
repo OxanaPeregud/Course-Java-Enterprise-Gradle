@@ -57,6 +57,16 @@
                     </td>
                 </tr>
                 <tr>
+                    <th>Course:</th>
+                    <td>
+                        <label>
+                            <input type="text" name="courseId" size="45"
+                                   value="<c:out value='${student.course}' />"
+                            />
+                        </label>
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="2" align="center">
                         <input type="submit" value="Save"/>
                     </td>

@@ -6,9 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -26,11 +24,9 @@ public class Student implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "student_course" ,joinColumns = {@JoinColumn(name = "student_id")},
-            inverseJoinColumns = {@JoinColumn(name = "course_id")}
-    )
-    private Set<Course> courses = new HashSet<>();
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn
+    private Course course;
 
     public Student(String firstName, String lastName) {
         this.firstName = firstName;
@@ -41,6 +37,12 @@ public class Student implements Serializable {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public Student(String firstName, String lastName, Course course) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.course = course;
     }
 
     @Override
@@ -54,5 +56,14 @@ public class Student implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }

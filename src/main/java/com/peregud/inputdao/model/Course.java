@@ -25,8 +25,8 @@ public class Course implements Serializable {
     @OneToMany(mappedBy = "course")
     private Set<Teacher> teacher = new HashSet<>();
 
-    @ManyToMany(mappedBy = "courses")
-    private Set<Student> students = new HashSet<>();
+    @OneToMany(mappedBy = "course")
+    private Set<Student> student = new HashSet<>();
 
     public Course(String name) {
         this.name = name;
