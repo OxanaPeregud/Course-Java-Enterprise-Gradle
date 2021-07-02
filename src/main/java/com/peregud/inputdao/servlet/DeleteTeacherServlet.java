@@ -1,8 +1,6 @@
 package com.peregud.inputdao.servlet;
 
-import com.peregud.inputdao.dao.DAOTeacher;
-import com.peregud.inputdao.dao.impl.DAOTeacherImpl;
-import com.peregud.inputdao.model.Teacher;
+import com.peregud.inputdao.service.ServletTeacherService;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,12 +10,12 @@ import java.io.IOException;
 
 @WebServlet("/delete-teacher")
 public class DeleteTeacherServlet extends HttpServlet {
-    private final DAOTeacher daoTeacher = new DAOTeacherImpl();
+    private final ServletTeacherService servletTeacherService = new ServletTeacherService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int id = Integer.parseInt(request.getParameter("id"));
-        daoTeacher.delete(Teacher.class, id);
+        servletTeacherService.delete(id);
         response.sendRedirect(request.getContextPath() + "/list-teachers");
     }
 }

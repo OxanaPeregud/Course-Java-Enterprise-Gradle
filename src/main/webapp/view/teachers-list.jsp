@@ -15,28 +15,37 @@
     </h2>
 </div>
 <div align="center">
-    <table border="1" cellpadding="5">
-        <caption><h2>List of Teachers</h2></caption>
-        <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Course</th>
-        </tr>
-        <c:forEach var="teacher" items="${listTeachers}">
+    <form action="list-teachers" method="post">
+        <table border="1" cellpadding="5">
+            <caption><h2>List of Teachers</h2></caption>
             <tr>
-                <td><c:out value="${teacher.id}"/></td>
-                <td><c:out value="${teacher.firstName}"/></td>
-                <td><c:out value="${teacher.lastName}"/></td>
-                <td><c:out value="${teacher.course}"/></td>
-                <td>
-                    <a href="edit-teacher?id=<c:out value='${teacher.id}' />">Edit</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="delete-teacher?id=<c:out value='${teacher.id}' />">Delete</a>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Course</th>
+            </tr>
+            <c:forEach var="teacher" items="${listTeachers}">
+                <tr>
+                    <td><c:out value="${teacher.id}"/></td>
+                    <td><c:out value="${teacher.firstName}"/></td>
+                    <td><c:out value="${teacher.lastName}"/></td>
+                    <td><c:out value="${teacher.course}"/></td>
+                    <td>
+                        <a href="edit-teacher?id=<c:out value='${teacher.id}' />">Edit</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label><input type="checkbox" name="deleteTeacher" value="${teacher.id}">Delete</label>
+                    </td>
+                </tr>
+            </c:forEach>
+
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Submit"/>
                 </td>
             </tr>
-        </c:forEach>
-    </table>
+
+        </table>
+    </form>
 
     <p>
         <a href="${pageContext.request.contextPath}/choose-list">Choose Another List</a>

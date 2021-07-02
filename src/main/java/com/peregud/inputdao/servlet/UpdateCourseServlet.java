@@ -1,8 +1,9 @@
 package com.peregud.inputdao.servlet;
 
-import com.peregud.inputdao.dao.DAOCourse;
-import com.peregud.inputdao.dao.impl.DAOCourseImpl;
+import com.peregud.inputdao.converter.ConverterImpl;
 import com.peregud.inputdao.model.Course;
+import com.peregud.inputdao.service.ServletCourseService;
+import lombok.SneakyThrows;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,14 +13,13 @@ import java.io.IOException;
 
 @WebServlet("/update-course")
 public class UpdateCourseServlet extends HttpServlet {
-    private final DAOCourse daoCourse = new DAOCourseImpl();
+    private final ServletCourseService servletCourseService = new ServletCourseService();
 
+    @SneakyThrows
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        String name = request.getParameter("name");
-        Course course = new Course(id, name);
-        daoCourse.save(course);
+        Course course = (Course) ConverterImpl.getConverter(Course.class).convert(request);
+        servletCourseService.save(course);
         response.sendRedirect(request.getContextPath() + "/list-courses");
     }
 }

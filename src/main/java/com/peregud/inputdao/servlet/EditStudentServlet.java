@@ -1,10 +1,8 @@
 package com.peregud.inputdao.servlet;
 
-import com.peregud.inputdao.dao.DAOStudent;
-import com.peregud.inputdao.dao.impl.DAOStudentImpl;
 import com.peregud.inputdao.model.Student;
+import com.peregud.inputdao.service.ServletStudentService;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,14 +12,13 @@ import java.io.IOException;
 
 @WebServlet("/edit-student")
 public class EditStudentServlet extends HttpServlet {
-    private final DAOStudent daoStudent = new DAOStudentImpl();
+    private final ServletStudentService servletStudentService = new ServletStudentService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
-        Student student = daoStudent.getById(Student.class, id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/student-form.jsp");
+        Student student = servletStudentService.getById(id);
         request.setAttribute("student", student);
-        dispatcher.forward(request, response);
+        request.getRequestDispatcher("view/student-form.jsp").forward(request, response);
     }
 }

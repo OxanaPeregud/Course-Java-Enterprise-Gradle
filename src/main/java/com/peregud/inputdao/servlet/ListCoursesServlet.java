@@ -1,10 +1,7 @@
 package com.peregud.inputdao.servlet;
 
-import com.peregud.inputdao.dao.DAOCourse;
-import com.peregud.inputdao.dao.impl.DAOCourseImpl;
-import com.peregud.inputdao.model.Course;
+import com.peregud.inputdao.service.ServletCourseService;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,14 +12,20 @@ import java.util.List;
 
 @WebServlet("/list-courses")
 public class ListCoursesServlet extends HttpServlet {
-    private final DAOCourse daoCourse = new DAOCourseImpl();
+    private final ServletCourseService servletCourseService = new ServletCourseService();
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException {
-        List<?> listCourses = daoCourse.getAll(Course.class);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        List<?> listCourses = servletCourseService.getList();
         request.setAttribute("listCourses", listCourses);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/courses-list.jsp");
-        dispatcher.forward(request, response);
+        request.getRequestDispatcher("view/courses-list.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        servletCourseService.deleteList(request.getParameterValues("deleteCourse"));
+        List<?> listCourses = servletCourseService.getList();
+        request.setAttribute("listCourses", listCourses);
+        request.getRequestDispatcher("view/courses-list.jsp").forward(request, response);
     }
 }

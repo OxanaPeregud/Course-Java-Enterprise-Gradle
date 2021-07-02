@@ -1,11 +1,9 @@
 package com.peregud.inputdao.servlet;
 
-import com.peregud.inputdao.dao.DAOCourse;
-import com.peregud.inputdao.dao.DAOStudent;
-import com.peregud.inputdao.dao.impl.DAOCourseImpl;
-import com.peregud.inputdao.dao.impl.DAOStudentImpl;
-import com.peregud.inputdao.model.Course;
+import com.peregud.inputdao.converter.ConverterImpl;
 import com.peregud.inputdao.model.Student;
+import com.peregud.inputdao.service.ServletStudentService;
+import lombok.SneakyThrows;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,17 +13,13 @@ import java.io.IOException;
 
 @WebServlet("/insert-student")
 public class InsertStudentServlet extends HttpServlet {
-    private final DAOStudent daoStudent = new DAOStudentImpl();
-    private final DAOCourse daoCourse = new DAOCourseImpl();
+    private final ServletStudentService servletStudentService = new ServletStudentService();
 
+    @SneakyThrows
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
-        int courseId = Integer.parseInt(request.getParameter("courseId"));
-        Course course = daoCourse.getById(Course.class, courseId);
-        Student student = new Student(firstName, lastName, course);
-        daoStudent.save(student);
+        Student student = (Student) ConverterImpl.getConverter(Student.class).convert(request);
+        servletStudentService.save(student);
         response.sendRedirect(request.getContextPath() + "/list-students");
     }
 }

@@ -11,8 +11,7 @@ import java.io.IOException;
 public class NewTeacherServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("view/teacher-form.jsp").forward(request, response);
     }
 }

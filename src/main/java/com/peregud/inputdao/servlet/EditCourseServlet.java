@@ -1,10 +1,8 @@
 package com.peregud.inputdao.servlet;
 
-import com.peregud.inputdao.dao.DAOCourse;
-import com.peregud.inputdao.dao.impl.DAOCourseImpl;
 import com.peregud.inputdao.model.Course;
+import com.peregud.inputdao.service.ServletCourseService;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,14 +12,13 @@ import java.io.IOException;
 
 @WebServlet("/edit-course")
 public class EditCourseServlet extends HttpServlet {
-    private final DAOCourse daoCourse = new DAOCourseImpl();
+    private final ServletCourseService servletCourseService = new ServletCourseService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
-        Course course = daoCourse.getById(Course.class, id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/course-form.jsp");
+        Course course = servletCourseService.getById(id);
         request.setAttribute("course", course);
-        dispatcher.forward(request, response);
+        request.getRequestDispatcher("view/course-form.jsp").forward(request, response);
     }
 }

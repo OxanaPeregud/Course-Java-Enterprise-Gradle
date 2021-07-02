@@ -15,24 +15,33 @@
     </h2>
 </div>
 <div align="center">
-    <table border="1" cellpadding="5">
-        <caption><h2>List of Courses</h2></caption>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-        </tr>
-        <c:forEach var="course" items="${listCourses}">
+    <form action="list-courses" method="post">
+        <table border="1" cellpadding="5">
+            <caption><h2>List of Courses</h2></caption>
             <tr>
-                <td><c:out value="${course.id}"/></td>
-                <td><c:out value="${course.name}"/></td>
-                <td>
-                    <a href="edit-course?id=<c:out value='${course.id}' />">Edit</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="delete-course?id=<c:out value='${course.id}' />">Delete</a>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+            <c:forEach var="course" items="${listCourses}">
+                <tr>
+                    <td><c:out value="${course.id}"/></td>
+                    <td><c:out value="${course.name}"/></td>
+                    <td>
+                        <a href="edit-course?id=<c:out value='${course.id}' />">Edit</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp
+                        <label><input type="checkbox" name="deleteCourse" value="${course.id}">Delete</label>
+                    </td>
+                </tr>
+            </c:forEach>
+
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Submit"/>
                 </td>
             </tr>
-        </c:forEach>
-    </table>
+
+        </table>
+    </form>
 
     <p>
         <a href="${pageContext.request.contextPath}/choose-list">Choose Another List</a>
