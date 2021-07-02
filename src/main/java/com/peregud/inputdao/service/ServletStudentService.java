@@ -6,6 +6,14 @@ import java.util.List;
 
 public class ServletStudentService extends ServletService<Student> {
 
+    public Student save(Student student) {
+        return super.save(student);
+    }
+
+    public Student getById(int id) {
+        return super.getById(Student.class, id);
+    }
+
     public List<?> getList() {
         return super.getAll(Student.class);
     }
@@ -16,13 +24,5 @@ public class ServletStudentService extends ServletService<Student> {
 
     public void deleteList(String[] idList) {
         super.deleteList(Student.class, idList);
-    }
-
-    public Student save(Student student) {
-        return super.save(student);
-    }
-
-    public Student getById(int id) {
-        return super.getById(Student.class, id);
     }
 }

@@ -6,12 +6,16 @@ import java.util.List;
 
 public class ServletService<T> extends AbstractDAO<T> {
 
-    public List<?> getList(Class<T> clazz) {
-        return super.getAll(clazz);
-    }
-
     public T save(T t) {
         return super.save(t);
+    }
+
+    public T getById(Class<T> clazz, int id) {
+        return super.getById(clazz, id);
+    }
+
+    public List<?> getList(Class<T> clazz) {
+        return super.getAll(clazz);
     }
 
     public void delete(Class<T> clazz, int id) {
@@ -24,9 +28,5 @@ public class ServletService<T> extends AbstractDAO<T> {
             i = id;
             super.delete(clazz, Integer.parseInt(i));
         }
-    }
-
-    public T getById(Class<T> clazz, int id) {
-        return super.getById(clazz, id);
     }
 }
